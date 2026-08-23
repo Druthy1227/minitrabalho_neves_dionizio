@@ -23,19 +23,42 @@ def listar(lista):
         print(f"{i['id']} {i['nome']}")
 
 
-def buscar(lista): 
-    ...
+def buscar(lista):
+    id_busca = int(input("Digite o ID a procurar: "))
 
-def alterar(lista): 
-    ...
+    for usuario in lista:
+        if usuario["id"] == id_busca:
+            print("\nRegistro encontrado:")
+            print(usuario)
+            return
+
+def alterar(lista):
+    id_busca = int(input("Digite o ID do usuário: "))
+
+    for usuario in lista:
+        if usuario["id"] == id_busca:
+
+            print(f"Nome atual: {usuario['nome']}")
+            novo_nome = input("Novo nome: ")
+
+            if novo_nome.strip():
+                usuario["nome"] = novo_nome
+
+            print("Registro atualizado!")
+            return
+
+    print("Registro não encontrado.")
 
 def remover(lista):
     confirmacao = input("Realmente deseja remover um usuário? y/n")
     if confirmacao == "y":
         registro.remove(input("Insira o id do registro a ser removido: "))
 
-def relatorio(lista): 
-    ...
+def relatorio(lista):
+    total = len(lista)
+
+    print("\n===== RELATÓRIO =====")
+    print(f"Total de registros: {total}")
 
 def main():  # funcao principal
     while True:
