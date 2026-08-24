@@ -95,22 +95,28 @@ def relatorio(lista):
 
     print(f"Total de registros: {total}\n")
 
-    contagem_categorias = {} # Dicionário de Categorias
+    contagem_categorias = {} # Dicionário vazio para guardar as contagens
+
+    # 1. Percorre cada usuário (dicionário) dentro da lista principal
     for usuario in lista:
-        cat = usuario['categoria']
-        contagem_categorias[cat] = contagem_categorias.get(cat, 0) + 1 
+        cat = usuario['categoria'] # Extrai o nome da categoria (ex: 'estudante') e guarda na variável 'cat'
+        contagem_categorias[cat] = contagem_categorias.get(cat, 0) + 1
         # .get(valor, valor_padrao) -> retorna o valor da chave se existir, caso contrário retorna o valor padrão para somar
 
+    # 2. O .items() desempacota o dicionário, entregando a chave (cat) e o valor (qtd) ao mesmo tempo
     for cat, qtd in contagem_categorias.items():
-        print(f"Total de {cat}: {qtd}")
+        print(f"Total de {cat}: {qtd}") 
 
+    # 3. Variáveis de controle que vão guardar quem está ganhando o ranking
     maior_quantidade = 0
     maior_categoria = ""
     
+    # 4. Percorre o dicionário de contagem novamente para comparar os números
     for cat, qtd in contagem_categorias.items():
+
         if qtd > maior_quantidade:
-            maior_quantidade = qtd
-            maior_categoria = cat
+            maior_quantidade = qtd 
+            maior_categoria = cat  
 
     print(f"\nCategoria principal: {maior_categoria} ({maior_quantidade} registros)")
 
